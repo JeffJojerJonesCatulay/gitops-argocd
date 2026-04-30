@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/JeffJojerJonesCatulay/gitops-argocd.git
-    targetRevision: HEAD
+    targetRevision: main
     path: local-argo-demo
   syncPolicy:
     automated:
