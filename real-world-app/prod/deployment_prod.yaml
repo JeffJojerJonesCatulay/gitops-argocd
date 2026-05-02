@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: real-world-app-prod
+ labels:
+   app: real-world-app-prod
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: real-world-app-prod
+ template:
+   metadata:
+     labels:
+       app: real-world-app-prod
+   spec:
+     containers:
+     - name: real-world-app-prod
+       image: jeffjojerjonescatulay/real-world-app:v1.0.1
+       ports:
+       - containerPort: 80
