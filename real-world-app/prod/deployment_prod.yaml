@@ -16,6 +16,6 @@ spec:
    spec:
      containers:
      - name: real-world-app-prod
-       image: jeffjojerjonescatulay/real-world-app:v1.0.1
+       image: jeffjojerjonescatulay/real-world-app:release_v1.0.2
        ports:
        - containerPort: 80
