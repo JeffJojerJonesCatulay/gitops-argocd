@@ -9,6 +9,8 @@ echo {password} | base64 --decode
 
 -- Port forward to service
 k port-forward --address 0.0.0.0 svc/real-world-app-dev-service 7777:3000 -n dev
+k port-forward --address 0.0.0.0 svc/real-world-app-release-service 7778:3001 -n release
+k port-forward --address 0.0.0.0 svc/real-world-app-prod-service 7779:3002 -n prod
 
 -- Jenkins notes
 set JENKINS_HOME=C:\ProgramData\Jenkins\.jenkins
