@@ -8,6 +8,17 @@ k get secret argocd-initial-admin-secret -n argocd -o yaml
 echo {password} | base64 --decode
 
 -- Port forward to service
-Dev: k port-forward svc/real-world-app-dev-service 3000:3000 -n dev
-Release: k port-forward svc/real-world-app-release-service 3001:3001 -n release
-Prod: k port-forward svc/real-world-app-prod-service 3002:3002 -n prod
+k port-forward --address 0.0.0.0 svc/real-world-app-dev-service 7777:3000 -n dev
+
+-- Jenkins notes
+set JENKINS_HOME=C:\ProgramData\Jenkins\.jenkins
+java -jar "D:\Softwares\JenkinsUpd\jenkins.war" --httpPort=8081
+
+-- Delete all Jenkins jobs
+def job = Jenkins.instance.getItem("real-world-app-dev")
+job.builds.each { it.delete() }
+
+-- Reset Jenkins build number
+def job = Jenkins.instance.getItem("real-world-app-dev")
+job.nextBuildNumber = 1
+job.save()
