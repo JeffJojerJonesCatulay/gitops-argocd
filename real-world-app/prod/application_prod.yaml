@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/JeffJojerJonesCatulay/gitops-argocd.git
-    targetRevision: prod
+    targetRevision: main
     path: real-world-app/prod
   syncPolicy:
     automated:
