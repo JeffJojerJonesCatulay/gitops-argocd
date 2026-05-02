@@ -6,3 +6,8 @@ k port-forward -n argocd svc/argocd-server 8080:443
 -- Get argocd admin credentials
 k get secret argocd-initial-admin-secret -n argocd -o yaml
 echo {password} | base64 --decode
+
+-- Port forward to service
+Dev: k port-forward svc/real-world-app-dev-service 3000:3000 -n dev
+Release: k port-forward svc/real-world-app-release-service 3001:3001 -n release
+Prod: k port-forward svc/real-world-app-prod-service 3002:3002 -n prod
