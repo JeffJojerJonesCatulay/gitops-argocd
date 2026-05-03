@@ -16,6 +16,8 @@ k port-forward --address 0.0.0.0 svc/real-world-app-prod-service 7779:3002 -n pr
 set JENKINS_HOME=C:\ProgramData\Jenkins\.jenkins
 java -jar "D:\Softwares\JenkinsUpd\jenkins.war" --httpPort=8081
 
+$env:JENKINS_HOME="C:\ProgramData\Jenkins\.jenkins"; java -jar "D:\Softwares\JenkinsUpd\jenkins.war" --httpPort=8081
+
 -- Delete all Jenkins jobs
 def job = Jenkins.instance.getItem("real-world-app-dev")
 job.builds.each { it.delete() }
