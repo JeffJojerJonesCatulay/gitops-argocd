@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: real-world-app-dev-service
   namespace: dev
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
 spec:
   selector:
     app: real-world-app-dev
