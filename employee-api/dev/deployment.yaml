@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: employee-api-dev
+ labels:
+   app: employee-api-dev
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: employee-api-dev
+ template:
+   metadata:
+     labels:
+       app: employee-api-dev
+   spec:
+     containers:
+     - name: employee-api-dev
+       image: 961776040935.dkr.ecr.us-east-1.amazonaws.com/app-images-global-30620849894:latest
+       ports:
+       - containerPort: 9010
