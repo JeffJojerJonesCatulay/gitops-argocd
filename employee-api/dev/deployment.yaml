@@ -19,3 +19,24 @@ spec:
        image: 961776040935.dkr.ecr.us-east-1.amazonaws.com/app-images-global-30620849894:latest
        ports:
        - containerPort: 9010
+       env:
+       - name: EMP_SERVER_PORT
+         valueFrom:
+           secretKeyRef:
+             name: employee-api-secrets
+             key: EMP_SERVER_PORT
+       - name: EMP_DB_URL
+         valueFrom:
+           secretKeyRef:
+             name: employee-api-secrets
+             key: EMP_DB_URL
+       - name: EMP_DB_USERNAME
+         valueFrom:
+           secretKeyRef:
+             name: employee-api-secrets
+             key: EMP_DB_USERNAME
+       - name: EMP_DB_PASSWORD
+         valueFrom:
+           secretKeyRef:
+             name: employee-api-secrets
+             key: EMP_DB_PASSWORD 
