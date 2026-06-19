@@ -16,7 +16,7 @@ spec:
    spec:
      containers:
      - name: employee-api-dev
-       image: 961776040935.dkr.ecr.us-east-1.amazonaws.com/app-images-global-30620849894:v1.0.17
+       image: 961776040935.dkr.ecr.us-east-1.amazonaws.com/app-images-global-30620849894:v1.0.1
        ports:
        - containerPort: 9010
        env:
