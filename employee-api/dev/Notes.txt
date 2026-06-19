@@ -1,0 +1,16 @@
+kubectl create namespace argocd
+kubectl apply -n argocd --server-side --force-conflicts -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+cd /mnt/d/Projects/gitops-argocd/employee-api/dev
+kubectl apply -f application.yaml
+
+-- Port forward to argo server 
+kubectl port-forward -n argocd svc/argocd-server 8080:443
+
+-- get argocd initial admin password 
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d ; echo
+
+-- set new password
+kubectl -n argocd argocd-server-repo-admin edit secret argocd-server-repo-admin
+
+
