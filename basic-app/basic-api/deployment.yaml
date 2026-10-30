@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-api-deployment
+  labels:
+    app: basic-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basic-api
+  template:
+    metadata:
+      labels:
+        app: basic-api
+    spec:
+      containers:
+      - name: basic-api
+        image: jeffjojerjonescatulay/k8s-sandbox:basic-api.v10
+        env:
+          - name: SECRET_MESSAGE
+            valueFrom:
+              secretKeyRef:
+                name: basic-api-secret
+                key: SECRET_MESSAGE
+        ports:
+        - containerPort: 9090
+        volumeMounts:
+        - name: data
+          mountPath: /mnt/data/basic-api
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: basic-api-pvc
