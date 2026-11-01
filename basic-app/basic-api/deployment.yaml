@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: basic-api
-        image: jeffjojerjonescatulay/k8s-sandbox:basic-api.v10
+        image: jeffjojerjonescatulay/k8s-sandbox:basic-api.v11
         env:
           - name: SECRET_MESSAGE
             valueFrom:
