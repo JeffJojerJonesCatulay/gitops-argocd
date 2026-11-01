@@ -25,6 +25,25 @@ spec:
                 key: SECRET_MESSAGE
         ports:
         - containerPort: 9090
+        resources:
+          requests:
+            memory: "128Mi"  
+            cpu: "100m"      
+          limits:
+            memory: "256Mi"  
+            cpu: "500m"     
+        readinessProbe:
+          httpGet:
+            path: /health   
+            port: 9090
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 9090
+          initialDelaySeconds: 15
+          periodSeconds: 20
         volumeMounts:
         - name: data
           mountPath: /mnt/data/basic-api
